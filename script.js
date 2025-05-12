@@ -9,22 +9,16 @@ const createNavbarTriggerArea = () => {
 // Navbar visibility control
 const navbar = document.querySelector('.navbar');
 const triggerArea = createNavbarTriggerArea();
-let lastScrollTop = 0;
 let isHovering = false;
 
-// Handle scroll events
+// Handle scroll events for sticky navbar background
 window.addEventListener('scroll', () => {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    
-    if (scrollTop > lastScrollTop && scrollTop > 50) {
-        // Scrolling down
+    if (scrollTop > 50) {
         navbar.classList.add('scrolled');
     } else {
-        // Scrolling up or at the top
         navbar.classList.remove('scrolled');
     }
-    
-    lastScrollTop = scrollTop;
 });
 
 // Handle hover events

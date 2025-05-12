@@ -13,7 +13,9 @@
     top: 0;
     left: 0;
     right: 0;
-    background-color: transparent !important;
+    background-color: rgba(255, 255, 255, 0.2) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     transition: all 0.3s ease;
     z-index: 1000;
     padding: 1rem 0;
@@ -398,14 +400,54 @@ footer .copyright {
     footer {
         padding: 40px 0 30px;
     }
-    
     .footer-logo {
         height: 60px;
         margin-bottom: 1rem;
     }
-    
     footer .col-md-6:not(:last-child) {
         margin-bottom: 2rem;
+    }
+    /* Keep two-column layout for footer sections on tablets and phones */
+    .footer-contact,
+    .footer-links {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Phone-specific footer tweaks */
+@media (max-width: 576px) {
+    footer {
+        padding: 2rem 1rem;
+    }
+    footer h4 {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+    }
+    footer p,
+    footer .list-unstyled a {
+        font-size: 0.9rem;
+    }
+    footer .list-unstyled li {
+        margin-bottom: 0.75rem;
+    }
+    footer .social-links a {
+        font-size: 1.5rem;
+        margin-right: 1rem;
+        margin-bottom: 0.5rem;
+    }
+    footer .input-group {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    footer .input-group .form-control {
+        width: 100%;
+    }
+    footer .input-group .btn-primary {
+        width: 100%;
+    }
+    .footer-contact,
+    .footer-links {
+        gap: 1rem;
     }
 }
 
@@ -786,14 +828,17 @@ footer .copyright {
 
 @media (max-width: 768px) {
     .about-features {
-        grid-template-columns: 1fr;
-    gap: 1rem;
-}
-
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+    }
+    /* Override gallery column count to maintain 3 columns */
+    .gallery-container {
+        column-count: 3 !important;
+    }
     .experience-badge {
         width: 100px;
         height: 100px;
-    padding: 1rem;
+        padding: 1rem;
         right: 20px;
         bottom: -20px;
     }
@@ -811,8 +856,8 @@ footer .copyright {
     }
     
     .about-content .lead {
-    font-size: 1rem;
-}
+        font-size: 1rem;
+    }
 
     .about-content .about-text {
         font-size: 1rem;
@@ -982,7 +1027,7 @@ section .container {
 
 @media (max-width: 576px) {
     .gallery-container {
-        column-count: 1;
+        column-count: 3 !important;
     }
 }
 
@@ -1002,4 +1047,36 @@ section .container {
 .container.py-5 {
     padding-top: 2rem !important;
     padding-bottom: 2rem !important;
+}
+
+@media (max-width: 768px) {
+    /* Make hero background scrollable on mobile and adjust hero spacing */
+    .hero {
+        background-attachment: scroll;
+        padding: 60px 0;
+    }
+    /* Scale down hero text for readability */
+    .hero .display-4 {
+        font-size: 2.5rem;
+    }
+    .hero h2 {
+        font-size: 1.75rem;
+    }
+    .hero .lead {
+        font-size: 1rem;
+    }
+    /* Make buttons full-width on mobile */
+    .hero-content .btn {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+    /* Adjust navbar link sizing */
+    .navbar .nav-link {
+        font-size: 0.9rem;
+    }
+    /* Tweak menu toggle buttons on mobile */
+    .menu-toggle .btn {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
 } 
